@@ -1,3 +1,10 @@
+/*
+ * @lc app=leetcode id=1 lang=javascript
+ *
+ * [1] Two Sum
+ */
+
+// @lc code=start
 /**
  * @param {number[]} nums
  * @param {number} target
@@ -16,5 +23,9 @@ var twoSum = function (nums, target) {
   }
   return [];
 };
+// @lc code=end
+console.log(twoSum([2, 7, 11, 15], 9));
 
-twoSum([2, 7, 11, 15], 9);
+// @after-stub-for-debug-begin
+module.exports = twoSum;
+// @after-stub-for-debug-end
