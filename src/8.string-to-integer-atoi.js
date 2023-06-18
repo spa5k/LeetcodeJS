@@ -14,14 +14,14 @@ var myAtoi = function (s) {
   let res = 0;
   let index = 0;
   let n = s.length;
-  while (index < n && s[index] === " ") {
+  while (index < n && s[index] === ' ') {
     index++;
   }
 
-  if (index < n && s[index] === "-") {
+  if (index < n && s[index] === '-') {
     sign = -1;
     index++;
-  } else if (index < n && s[index] === "+") {
+  } else if (index < n && s[index] === '+') {
     index++;
   }
 
@@ -29,7 +29,7 @@ var myAtoi = function (s) {
   let INT_MIN = -Math.pow(2, 31);
 
   while (index < n && !isNaN(parseInt(s[index]))) {
-    let digit = s[index] - "0";
+    let digit = s[index] - '0';
 
     if (
       res > Math.floor(INT_MAX / 10) ||
@@ -44,4 +44,4 @@ var myAtoi = function (s) {
 };
 // @lc code=end
 
-console.log(myAtoi("42"));
+console.log(myAtoi('42'));

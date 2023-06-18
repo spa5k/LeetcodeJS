@@ -29,7 +29,7 @@ var findAnagrams = function (s, p) {
   }
 
   while (right < s.length) {
-    if (pHash.join("") === sHash.join("")) {
+    if (pHash.join('') === sHash.join('')) {
       res.push(left);
     }
     right++;
@@ -43,4 +43,4 @@ var findAnagrams = function (s, p) {
 };
 // @lc code=end
 
-findAnagrams("cbaebabacd", "abc");
+findAnagrams('cbaebabacd', 'abc');

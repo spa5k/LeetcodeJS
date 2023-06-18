@@ -15,7 +15,7 @@ var backspaceCompare = function (s, t) {
   const s2 = [];
 
   for (const i of s) {
-    if (i === "#") {
+    if (i === '#') {
       if (s1.length > 0) {
         s1.pop();
       }
@@ -25,7 +25,7 @@ var backspaceCompare = function (s, t) {
   }
 
   for (const i of t) {
-    if (i === "#") {
+    if (i === '#') {
       if (s2.length > 0) {
         s2.pop();
       }

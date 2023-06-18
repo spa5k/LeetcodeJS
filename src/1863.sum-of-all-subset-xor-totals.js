@@ -9,8 +9,5 @@
  * @param {number[]} nums
  * @return {number}
  */
-var subsetXORSum = function(nums) {
-    
-};
+var subsetXORSum = function (nums) {};
 // @lc code=end
-

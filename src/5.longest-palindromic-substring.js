@@ -10,7 +10,7 @@
  * @return {string}
  */
 var longestPalindrome = function (s) {
-  let max = "";
+  let max = '';
   for (let i = 0; i < s.length; i++) {
     for (let j = 0; j < 2; j++) {}
   }

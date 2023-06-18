@@ -28,5 +28,5 @@ var slowestKey = function (releaseTimes, keysPressed) {
   return char;
 };
 // @lc code=end
-const x = slowestKey([1, 2], "ba");
+const x = slowestKey([1, 2], 'ba');
 console.log(x);

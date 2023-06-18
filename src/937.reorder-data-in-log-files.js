@@ -23,8 +23,8 @@ var reorderLogFiles = function (logs) {
   }
 
   letterLogs.sort((a, b) => {
-    const aStr = a.slice(a.indexOf(" ") + 1);
-    const bStr = b.slice(b.indexOf(" ") + 1);
+    const aStr = a.slice(a.indexOf(' ') + 1);
+    const bStr = b.slice(b.indexOf(' ') + 1);
 
     if (aStr === bStr) {
       return a.localeCompare(b);
@@ -40,7 +40,7 @@ var reorderLogFiles = function (logs) {
 
 const isDigitLog = (log) => {
   // remove first word and check if its string
-  const logBody = log.slice(log.indexOf(" ") + 1);
+  const logBody = log.slice(log.indexOf(' ') + 1);
   // check if log body is digit
   if (logBody[0] >= 0 && logBody[0] <= 9) {
     return true;
@@ -49,10 +49,10 @@ const isDigitLog = (log) => {
 };
 
 const isLetterLog = (log) => {
-  if (log.startsWith("let")) {
+  if (log.startsWith('let')) {
     return true;
   }
 };
 // @lc code=end
 
-console.log(reorderLogFiles(["1 n u", "r 527", "j 893", "6 14", "6 82"]));
+console.log(reorderLogFiles(['1 n u', 'r 527', 'j 893', '6 14', '6 82']));

@@ -10,8 +10,5 @@
  * @param {number} target
  * @return {number[][]}
  */
-var combinationSum = function(candidates, target) {
-    
-};
+var combinationSum = function (candidates, target) {};
 // @lc code=end
-

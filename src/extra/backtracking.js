@@ -1,17 +1,17 @@
 function dfs(n, res, startIndex, path) {
-  console.log("n", n);
-  console.log("res", res);
-  console.log("startIndex", startIndex);
-  console.log("path", path);
+  console.log('n', n);
+  console.log('res', res);
+  console.log('startIndex', startIndex);
+  console.log('path', path);
 
   if (startIndex == n) {
-    const pathCopy = path.join("");
+    const pathCopy = path.join('');
     console.log(pathCopy);
-    res.push(path.join(""));
+    res.push(path.join(''));
     return;
   }
-  ["a", "b"].forEach((letter) => {
-    console.log("letter", letter);
+  ['a', 'b'].forEach((letter) => {
+    console.log('letter', letter);
     path.push(letter);
     dfs(n, res, startIndex + 1, path);
     path.pop();

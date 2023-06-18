@@ -16,11 +16,11 @@ var isRobotBounded = function (instructions) {
   let dy = 1;
 
   for (let direction of instructions) {
-    if (direction === "R") {
+    if (direction === 'R') {
       let temp = dx;
       dx = dy;
       dy = -temp;
-    } else if (direction === "L") {
+    } else if (direction === 'L') {
       let temp = dy;
       dy = dx;
       dx = -temp;

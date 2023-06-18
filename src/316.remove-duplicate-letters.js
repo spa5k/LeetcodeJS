@@ -18,11 +18,10 @@ var removeDuplicateLetters = function (s) {
   for (let right = 0; right < s.length; right++) {
     const cur = s[right];
     if (counter.has(cur)) {
-      counter.set(cur) = counter.get(cur) + 1;
+      counter.set(cur, counter.get(cur) + 1);
     }
     while (counter.get(cur) > 1) {
       counter.set(s[l], counter.get(s[l] - 1));
-
     }
     longest = Math.max(longest, right - l + 1);
   }

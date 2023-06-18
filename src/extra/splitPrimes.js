@@ -13,7 +13,7 @@ function splitPrimes(inputStr) {
     dp[i] = 0;
     for (let n = 1; n <= Math.min(3, i); n++) {
       if (
-        inputStr[i - n] !== "0" &&
+        inputStr[i - n] !== '0' &&
         primes.has(parseInt(inputStr.slice(i - n, i)))
       ) {
         dp[i] += dp[i - n];
