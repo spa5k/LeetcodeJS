@@ -15,18 +15,18 @@ var combine = function (n, k) {
     const state = [];
 
     function dfs(start) {
-        if (state.length === k - 1) {
+        if (state.length === k) {
             result.push([...state]);
             return;
         }
 
-        for (let i = start; i < n; i++) {
+        for (let i = start; i <= n; i++) {
             state.push(i);
-            dfs(start + i);
+            dfs(i + 1);
             state.pop();
         }
     }
-    dfs(0);
+    dfs(1);
     return result;
 };
 // @lc code=end
