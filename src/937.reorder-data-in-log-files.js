@@ -11,47 +11,47 @@
  */
 
 var reorderLogFiles = function (logs) {
-  const digitLogs = [];
-  const letterLogs = [];
+    const digitLogs = [];
+    const letterLogs = [];
 
-  for (const log of logs) {
-    if (isDigitLog(log)) {
-      digitLogs.push(log);
-    } else {
-      letterLogs.push(log);
-    }
-  }
-
-  letterLogs.sort((a, b) => {
-    const aStr = a.slice(a.indexOf(' ') + 1);
-    const bStr = b.slice(b.indexOf(' ') + 1);
-
-    if (aStr === bStr) {
-      return a.localeCompare(b);
+    for (const log of logs) {
+        if (isDigitLog(log)) {
+            digitLogs.push(log);
+        } else {
+            letterLogs.push(log);
+        }
     }
 
-    if (aStr > bStr) {
-      return true;
-    }
-    return false;
-  });
-  return [...letterLogs, ...digitLogs];
+    letterLogs.sort((a, b) => {
+        const aStr = a.slice(a.indexOf(' ') + 1);
+        const bStr = b.slice(b.indexOf(' ') + 1);
+
+        if (aStr === bStr) {
+            return a.localeCompare(b);
+        }
+
+        if (aStr > bStr) {
+            return true;
+        }
+        return false;
+    });
+    return [...letterLogs, ...digitLogs];
 };
 
 const isDigitLog = (log) => {
-  // remove first word and check if its string
-  const logBody = log.slice(log.indexOf(' ') + 1);
-  // check if log body is digit
-  if (logBody[0] >= 0 && logBody[0] <= 9) {
-    return true;
-  }
-  return !/[a-zA-Z]/.test(logBody);
+    // remove first word and check if its string
+    const logBody = log.slice(log.indexOf(' ') + 1);
+    // check if log body is digit
+    if (logBody[0] >= 0 && logBody[0] <= 9) {
+        return true;
+    }
+    return !/[a-zA-Z]/.test(logBody);
 };
 
 const isLetterLog = (log) => {
-  if (log.startsWith('let')) {
-    return true;
-  }
+    if (log.startsWith('let')) {
+        return true;
+    }
 };
 // @lc code=end
 

@@ -11,30 +11,30 @@
  * @return {number}
  */
 var maximumUnits = function (boxTypes, truckSize) {
-  let ans = 0;
-  let boxesLeft = truckSize;
-  boxTypes.sort((a, b) => b[1] - a[1]);
+    let ans = 0;
+    let boxesLeft = truckSize;
+    boxTypes.sort((a, b) => b[1] - a[1]);
 
-  for (let i = 0; i < boxTypes.length; i++) {
-    let [box, units] = boxTypes[i];
-    box = Math.min(boxesLeft, box);
-    ans += box * units;
-    boxesLeft -= box;
+    for (let i = 0; i < boxTypes.length; i++) {
+        let [box, units] = boxTypes[i];
+        box = Math.min(boxesLeft, box);
+        ans += box * units;
+        boxesLeft -= box;
 
-    if (boxesLeft === 0) {
-      break;
+        if (boxesLeft === 0) {
+            break;
+        }
     }
-  }
 
-  return ans;
+    return ans;
 };
 // @lc code=end
 const x = maximumUnits(
-  [
-    [1, 3],
-    [2, 2],
-    [3, 1],
-    [1, 1],
-  ],
-  4
+    [
+        [1, 3],
+        [2, 2],
+        [3, 1],
+        [1, 1],
+    ],
+    4
 );

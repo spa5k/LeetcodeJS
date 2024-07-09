@@ -18,25 +18,25 @@
  * @return {ListNode}
  */
 var mergeTwoLists = function (l1, l2) {
-  let prehead = new ListNode(-1);
-  let prev = prehead;
+    let prehead = new ListNode(-1);
+    let prev = prehead;
 
-  while (l1 && l2) {
-    if (l1.val < l2.val) {
-      prev.next = l1;
-      l1 = l1.next;
-    } else {
-      prev.next = l2;
-      l2 = l2.next;
+    while (l1 && l2) {
+        if (l1.val < l2.val) {
+            prev.next = l1;
+            l1 = l1.next;
+        } else {
+            prev.next = l2;
+            l2 = l2.next;
+        }
+        prev = prev.next;
     }
-    prev = prev.next;
-  }
 
-  if (l1 == null && l2 !== null) {
-    prev.next = l2;
-  } else {
-    prev.next = l1;
-  }
-  return prehead.next;
+    if (l1 == null && l2 !== null) {
+        prev.next = l2;
+    } else {
+        prev.next = l1;
+    }
+    return prehead.next;
 };
 // @lc code=end

@@ -18,16 +18,16 @@
  * @return {boolean}
  */
 var hasCycle = function (nodes) {
-  let slow = nodes;
-  let fast = nodes.next || null;
-  while (fast && fast.next) {
-    if (slow.val === fast.val) {
-      return true;
+    let slow = nodes;
+    let fast = nodes.next || null;
+    while (fast && fast.next) {
+        if (slow.val === fast.val) {
+            return true;
+        }
+        fast = fast.next.next;
+        slow = slow.next;
     }
-    fast = fast.next.next;
-    slow = slow.next;
-  }
-  return false;
+    return false;
 };
 
 // @lc code=end
