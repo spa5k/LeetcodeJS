@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=78 lang=javascript
+ * @lc app=leetcode id=90 lang=javascript
  *
- * [78] Subsets
+ * [90] Subsets II
  */
 
 // @lc code=start
@@ -9,11 +9,16 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var subsets = function (nums) {
+var subsetsWithDup = function (nums) {
     const result = [];
     const state = [];
-
+    const memo = {};
+    nums.sort((a, b) => a - b);
     function dfs(start) {
+        if (memo[state.join(',')]) {
+            return;
+        }
+
         result.push([...state]);
 
         for (let i = start; i < nums.length; i++) {
@@ -21,6 +26,8 @@ var subsets = function (nums) {
             dfs(i + 1);
             state.pop();
         }
+
+        memo[state.join(',')] = true;
     }
     dfs(0);
     return result;
