@@ -1,0 +1,27 @@
+/*
+ * @lc app=leetcode id=62 lang=javascript
+ *
+ * [62] Unique Paths
+ */
+
+// @lc code=start
+/**
+ * @param {number} m
+ * @param {number} n
+ * @return {number}
+ */
+var uniquePaths = function (m, n) {
+    const dp = [];
+    for (let i = 0; i < n; i++) {
+        const mArray = new Array(m).fill(1);
+        dp.push([...mArray]);
+    }
+
+    for (let i = 1; i < n; i++) {
+        for (let j = 1; j < m; j++) {
+            dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+        }
+    }
+
+    return dp[n - 1][m - 1];
+};
