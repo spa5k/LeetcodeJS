@@ -35,8 +35,11 @@ var maximalSquare = function (matrix) {
         for (let c = 1; c < cols; c++) {
             if (matrix[r][c] == 0) continue;
 
-            dp[r][c] =
-                Math.min(dp[r - 1][c], dp[r][c - 1], dp[r - 1][c - 1]) + 1;
+            let left = dp[r][c - 1];
+            let up = dp[r - 1][c];
+            let diagonal = dp[r - 1][c - 1];
+
+            dp[r][c] = Math.min(left, up, diagonal) + 1;
             res = Math.max(dp[r][c], res);
         }
     }
