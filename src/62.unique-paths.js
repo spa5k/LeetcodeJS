@@ -20,17 +20,7 @@ var uniquePathsRecursion = function (m, n, memo = {}) {
     memo[key] = res;
     return res;
 };
-
-// @lc code=start
-
-/**
- * Calculates the number of unique paths from the top-left corner to the bottom-right corner of a grid.
- * @param {number} m - The number of rows in the grid.
- * @param {number} n - The number of columns in the grid.
- * @param {Object} memo - An optional memoization object to store previously calculated results.
- * @returns {number} The number of unique paths.
- */
-var uniquePaths = function (m, n) {
+var uniquePathDP = function (m, n) {
     const dp = [];
     for (let i = 0; i < n; i++) {
         const mArray = new Array(m).fill(1);
@@ -44,4 +34,20 @@ var uniquePaths = function (m, n) {
     }
 
     return dp[n - 1][m - 1];
+};
+// @lc code=start
+
+/**
+ * Calculates the number of unique paths from the top-left corner to the bottom-right corner of a grid.
+ * @param {number} m - The number of rows in the grid.
+ * @param {number} n - The number of columns in the grid.
+ * @param {Object} memo - An optional memoization object to store previously calculated results.
+ * @returns {number} The number of unique paths.
+ */
+var uniquePaths = function (m, n) {
+    const dp = Array(m + 1)
+        .fill()
+        .map(() => Array(n + 1).fill(0));
+
+    console.log(dp);
 };
