@@ -1,24 +1,51 @@
-var uniquePaths = function (m, n) {
-    const dp = Array(m + 1)
-        .fill()
-        .map(() => Array(n + 1).fill(0));
+/**
+ * @param {number[][]} envelopes
+ * @return {number}
+ */
+var maxEnvelopes = function (envelopes) {
+    let dp = [];
 
-    dp[1][1] = 1;
+    envelopes.sort((a, b) => {
+        if (a[0] === b[0]) {
+            return b[1] - a[1];
+        } else {
+            return a[0] - b[0];
+        }
+    });
 
-    for (let i = 0; i <= m; i++) {
-        for (let j = 0; j <= n; j++) {
-            const current = dp[i][j];
-            if (i + 1 <= m) {
-                dp[i + 1][j] += current;
+    for (let [_, h] of envelopes) {
+        let i = 0;
+        let n = envelopes.length;
+
+        while (i < n) {
+            if (h <= dp[i]) {
+                break;
             }
+            i += 1;
+        }
 
-            if (j + 1 <= n) {
-                dp[i][j + 1] += current;
-            }
+        if (i === n) {
+            dp.push(h);
+        } else {
+            dp[i] = h;
         }
     }
 
-    return dp[m][n];
+    console.log(dp);
+
+    return dp.length;
 };
 
-console.log(uniquePaths(3, 2));
+console.log(
+    maxEnvelopes([
+        [2, 100],
+        [3, 200],
+        [4, 300],
+        [5, 500],
+        [5, 400],
+        [5, 250],
+        [6, 370],
+        [6, 360],
+        [7, 380],
+    ])
+);

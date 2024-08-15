@@ -9,20 +9,18 @@
  * @param {number[]} nums
  * @return {number}
  */
-var lengthOfLIS = function (nums) {
+function lengthOfLIS(nums) {
     if (nums.length === 0) return 0;
+    const dp = new Array(nums.length + 1).fill(1);
 
-    let dp = new Array(nums.length).fill(1);
-
-    for (let i = nums.length - 1; i >= 0; i--) {
-        for (let j = i + 1; j < nums.length; j++) {
-            if (nums[i] < nums[j]) {
-                dp[i] = Math.max(dp[i], 1 + dp[j]);
+    for (let i = 1; i <= nums.length; i++) {
+        for (let j = i; j >= 0; j--) {
+            if (nums[i] > nums[j]) {
+                dp[i] = Math.max(dp[i], dp[j] + 1);
             }
         }
     }
 
     return Math.max(...dp);
-};
-
+}
 // @lc code=end
