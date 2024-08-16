@@ -1,11 +1,18 @@
+/*
+ * @lc app=leetcode id=646 lang=javascript
+ *
+ * [646] Maximum Length of Pair Chain
+ */
+
+// @lc code=start
 /**
- * @param {number[][]} envelopes
+ * @param {number[][]} pairs
  * @return {number}
  */
 var findLongestChain = function (pairs) {
     const dp = new Array(pairs.length + 1).fill(1);
 
-    pairs.sort((a, b) => {
+    dp.sort((a, b) => {
         if (a[0] === b[0]) {
             return a[1] - b[1];
         } else {
@@ -14,29 +21,16 @@ var findLongestChain = function (pairs) {
     });
 
     for (let i = 0; i < pairs.length; i++) {
-        const bi = pairs[i][1];
-
+        const [ai, bi] = pairs[i];
         for (let j = i; j < pairs.length; j++) {
-            const aj = pairs[j][0];
+            const [aj, bj] = pairs[j];
 
             if (bi < aj) {
-                dp[j] = Math.max(dp[j], dp[i] + 1);
+                dp[j] += 1;
             }
         }
     }
 
     return Math.max(...dp);
 };
-
-console.log(
-    findLongestChain([
-        [-10, -8],
-        [8, 9],
-        [-5, 0],
-        [6, 10],
-        [-6, -4],
-        [1, 7],
-        [9, 10],
-        [-4, 7],
-    ])
-);
+// @lc code=end
