@@ -1,5 +1,12 @@
+/*
+ * @lc app=leetcode id=1048 lang=javascript
+ *
+ * [1048] Longest String Chain
+ */
+
+// @lc code=start
 /**
- * @param {number[]} nums
+ * @param {string[]} words
  * @return {number}
  */
 var longestStrChain = function (words) {
@@ -39,4 +46,4 @@ var longestStrChain = function (words) {
 
     return Math.max(...dp);
 };
-console.log(longestStrChain(['a', 'b', 'ba', 'bca', 'bda', 'bdca']));
+// @lc code=end
