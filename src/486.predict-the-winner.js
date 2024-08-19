@@ -10,15 +10,25 @@
  * @return {boolean}
  */
 var predictTheWinner = function (nums) {
-    function maxScore(l, r) {
+    const memo = Array(nums.length)
+        .fill(null)
+        .map(() => Array(nums.length).fill(null));
+
+    function maxDiff(l, r) {
         if (l === r) return nums[l];
 
-        const pickLeft = nums[l] - maxScore(l + 1, r);
-        const pickRight = nums[r] - maxScore(l, r - 1);
+        if (memo[l][r] !== null) {
+            return memo[l][r];
+        }
 
-        return Math.max(pickLeft, pickRight);
+        const left = nums[l] - maxDiff(l + 1, r);
+        const right = nums[r] - maxDiff(l, r - 1);
+
+        memo[l][r] = Math.max(left, right);
+
+        return memo[l][r];
     }
 
-    return maxScore(0, nums.length - 1) >= 0;
+    return maxDiff(0, nums.length - 1) >= 0;
 };
 // @lc code=end
