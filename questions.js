@@ -1,42 +1,31 @@
 /**
  * @param {number[]} nums
- * @return {number}
+ * @return {boolean}
  */
-var longestStrChain = function (words) {
-    const dp = new Array(words.length).fill(1);
+var canPartition = function (nums) {
+    const sum = nums.reduce((a, b) => a + b, 0);
 
-    words.sort((a, b) => a.length - b.length);
+    if (sum % 2 !== 0) {
+        return false;
+    }
 
-    for (let i = 0; i < words.length; i++) {
-        const word = words[i];
+    const target = sum / 2;
 
-        for (let j = i; j < words.length; j++) {
-            const wj = words[j];
+    // Initialize a DP array of size target + 1
+    const dp = new Array(target + 1).fill(false);
+    dp[0] = true; // Base case: A sum of 0 is always possible with an empty subset
 
-            if (wj.length > word.length + 1) {
-                break;
-            }
-
-            if (isPredecessor(word, wj)) {
-                dp[j] = Math.max(dp[j], dp[i] + 1);
+    // Iterate over each number in the nums array
+    for (let num of nums) {
+        // Iterate backward over the DP array to avoid premature updates
+        for (let i = target; i >= num; i--) {
+            if (dp[i - num] === true && dp[i] !== true) {
+                dp[i] = dp[i] || dp[i - num];
             }
         }
     }
 
-    function isPredecessor(word1, word2) {
-        if (word2.length !== word1.length + 1) return false;
-
-        let i = 0,
-            j = 0;
-        while (i < word1.length && j < word2.length) {
-            if (word1[i] === word2[j]) {
-                i++;
-            }
-            j++;
-        }
-        return i === word1.length;
-    }
-
-    return Math.max(...dp);
+    return dp[target];
 };
-console.log(longestStrChain(['a', 'b', 'ba', 'bca', 'bda', 'bdca']));
+
+console.log('Can partition:', canPartition([1, 5, 11, 5]));
