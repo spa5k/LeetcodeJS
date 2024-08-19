@@ -10,32 +10,27 @@
  * @param {number} amount
  * @return {number}
  */
-
 function coinChange(coins, amount) {
-    let memo = new Array(amount + 1).fill(-1);
+    const n = coins.length;
 
-    function dfs(sum) {
-        if (sum === amount) {
-            return 0;
-        }
-        if (sum > amount) {
-            return Infinity;
-        }
-        if (memo[sum] !== -1) {
-            return memo[sum];
-        }
-        let ans = Infinity;
-        for (let coin of coins) {
-            let result = dfs(sum + coin);
-            if (result !== Infinity) {
-                ans = Math.min(ans, result + 1);
+    if (n === 0) return 0;
+
+    const dp = new Array(amount + 1).fill(amount + 1);
+
+    dp[0] = 0;
+
+    for (let i = 0; i < n; i++) {
+        const coin = coins[i];
+        for (let j = coin; j <= amount; j++) {
+            const val = dp[j - coin] + 1;
+
+            if (val < dp[j]) {
+                dp[j] = val;
             }
         }
-        return (memo[sum] = ans);
     }
 
-    let result = dfs(0);
-    return result === Infinity ? -1 : result;
+    return dp[amount] > amount ? -1 : dp[amount];
 }
 
 // @lc code=end

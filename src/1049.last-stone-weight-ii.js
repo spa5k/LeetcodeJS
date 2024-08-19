@@ -9,8 +9,5 @@
  * @param {number[]} stones
  * @return {number}
  */
-var lastStoneWeightII = function(stones) {
-    
-};
+var lastStoneWeightII = function (stones) {};
 // @lc code=end
-
