@@ -11,24 +11,30 @@
  * @return {number}
  */
 var minDistance = function (word1, word2) {
-    const dp = Array.from({ length: word1.length + 1 }, () =>
-        Array(word2.length + 1).fill(-1)
-    );
+    const n = word1.length;
+    const m = word2.length;
 
-    function dfs(m, n) {
-        if (m === 0) return n;
-        if (n === 0) return m;
-        if (dp[m][n] !== -1) return dp[m][n];
-
-        const cost = word1.charAt(m - 1) === word2.charAt(n - 1) ? 0 : 1;
-        dp[m][n] = Math.min(
-            dfs(m - 1, n) + 1,
-            dfs(m, n - 1) + 1,
-            dfs(m - 1, n - 1) + cost
-        );
-
-        return dp[m][n];
+    const dp = new Array(n + 1).fill().map(() => new Array(m + 1).fill(0));
+    for (let i = 0; i <= m; i++) {
+        dp[0][i] = i;
     }
-    return dfs(word1.length, word2.length);
+    for (let i = 0; i <= n; i++) {
+        dp[i][0] = i;
+    }
+
+    for (let r = 1; r <= n; r++) {
+        for (let c = 1; c <= m; c++) {
+            const letter1 = word1[r - 1];
+            const letter2 = word2[c - 1];
+
+            if (letter1 === letter2) {
+                dp[r][c] = dp[r - 1][c - 1];
+            } else {
+                dp[r][c] =
+                    Math.min(dp[r - 1][c], dp[r][c - 1], dp[r - 1][c - 1]) + 1;
+            }
+        }
+    }
+    return dp[n][m];
 };
 // @lc code=end

@@ -1,25 +1,26 @@
 /*
- * @lc app=leetcode id=518 lang=javascript
+ * @lc app=leetcode id=583 lang=javascript
  *
- * [518] Coin Change II
+ * [583] Delete Operation for Two Strings
  */
 
 // @lc code=start
 /**
- * @param {number} amount
- * @param {number[]} coins
+ * @param {string} word1
+ * @param {string} word2
  * @return {number}
  */
 var minDistance = function (word1, word2) {
     const n = word1.length;
     const m = word2.length;
-
     const dp = new Array(n + 1).fill().map(() => new Array(m + 1).fill(0));
-    for (let i = 0; i <= m; i++) {
-        dp[0][i] = i;
-    }
+    // Initialize the first row and first column
+
     for (let i = 0; i <= n; i++) {
         dp[i][0] = i;
+    }
+    for (let j = 0; j <= m; j++) {
+        dp[0][j] = j;
     }
 
     for (let r = 1; r <= n; r++) {
@@ -30,13 +31,10 @@ var minDistance = function (word1, word2) {
             if (letter1 === letter2) {
                 dp[r][c] = dp[r - 1][c - 1];
             } else {
-                dp[r][c] =
-                    Math.min(dp[r - 1][c], dp[r][c - 1], dp[r - 1][c - 1]) + 1;
+                dp[r][c] = Math.min(dp[r - 1][c], dp[r][c - 1]) + 1;
             }
         }
     }
     return dp[n][m];
 };
 // @lc code=end
-
-console.log(minDistance('horse', 'ros'));
