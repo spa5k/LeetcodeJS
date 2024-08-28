@@ -1,13 +1,13 @@
 /*
- * @lc app=leetcode id=518 lang=javascript
+ * @lc app=leetcode id=1143 lang=javascript
  *
- * [518] Coin Change II
+ * [1143] Longest Common Subsequence
  */
 
 // @lc code=start
 /**
- * @param {number} amount
- * @param {number[]} coins
+ * @param {string} text1
+ * @param {string} text2
  * @return {number}
  */
 var longestCommonSubsequence = function (text1, text2) {
@@ -28,8 +28,13 @@ var longestCommonSubsequence = function (text1, text2) {
             }
         }
     }
-    return dp[n][m];
+    return dp[m][n];
 };
 // @lc code=end
-
-console.log(longestCommonSubsequence('abcde', 'ace'));
+// if (i === 0 || j === 0) {
+//     dp[i][j] = 0;
+// } else if (text1[i - 1] === text2[j - 1]) {
+//     dp[i][j] = dp[i - 1][j - 1] + 1;
+// } else {
+//     dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+// }
